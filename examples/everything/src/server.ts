@@ -2,6 +2,11 @@ import { intentMiddleware } from "@alpic-ai/insights";
 import { McpServer } from "skybridge/server";
 import { z } from "zod";
 
+// Intentional failure to test stdout capture in build logs (ALP-572)
+console.log("[everything] Starting server...");
+console.log("[everything] Checking environment...");
+throw new Error("Intentional startup failure — stdout should now appear in build logs");
+
 const server = new McpServer(
   {
     name: "alpic-openai-app",
